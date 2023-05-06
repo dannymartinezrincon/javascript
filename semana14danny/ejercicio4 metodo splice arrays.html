@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>metodo splice</title>
+</head>
+<body>
+    
+    <center>
+        <img src="./img/Image20230506073211.png" alt="" width="150" height="150">
+        <h1>meodo splice array</h1>
+        <h2> busqueda / eliminacion de elementos</h2>
+        <br><br>
+        <p>el nuevo arrays es el siguiente</p>
+        <script>
+        //creacion
+            let num;
+            let std=new Array();
+            //captura
+            num=parseInt(prompt("Ingrese cantidad elementos a guardar..."));
+            for(i=0;i<num;i++){
+                std[i]=prompt("ingrese nombre std a guardar");
+            }
+            //busqueda
+            let datob=prompt("ingrese nombre std a buscar...");
+            let find=std.indexOf(datob.trim());
+            if (find>-1){
+                let index=std.splice(find,1)//eliminar en la ubicacion encontrada
+                alert("STD eliminado exitosamente..."+"\n"+"lista nueva..."+std);
+            }else{
+                alert("ERROR...STD no encontrado en array");
+            }
+            document.write(std+",");
+            console.log(std);
+</script>
+    </center>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>factura venta pos </title>
+</head>
+<body>
+    <center>
+        <img src="./img/Image20230506073159.jpg" alt="" height="200" width="200">
+        <h1>supemercado grosery</h1>
+        <h2>TIRILLA DE FACTURA VENTA POS</h2>
+        <script>
+            const SPeso = new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+        });
+        //variables
+       let suma=0; // total a pagar antes de descuento e iva
+       let netop=0; //total a pagar 
+       let desc=0;
+       let iva=0;
+       let fpago=0;
+       let pago=0;
+       let num=0;
+       let cambio=0;
+       let f=new Date();//objeto fecha dia, ms año, horas minutos y segundos
+       let nombrep=new Array();
+       let precio=new Array();
+       let cant=new Array();
+       let subt=new Array();
+       //captura
+       nomstd=prompt("ingrese nombre cajero...");
+       num=parseInt(prompt("ingrese cantidad productos a comprar..."));
+       //ciclo for array detalle factura
+       for (i=0;i<num;i++){
+        nombrep[i]=prompt('ingrese nombre del producto');
+        precio[i]=prompt('ingrese precio del producto a comprar');
+        cant[i]=prompt('ingrese la cantidad deseada a comprar');
+        subt[i]=precio[i]*cant[i];
+        suma=suma+subt[i];//acumulador o sumador de productos comprados
+    }
+    //proceso
+    fpago=parseInt(prompt("ingrese forma de pago -->[1=efectivo / 2= nequi / 3= tarjeta de credito]"));
+    if (fpago==1){
+        desc=suma*0.10;
+    }else {
+        desc=suma*0;
+    }
+    iva=(suma-desc)*0.19;
+    netop=suma-desc+iva;
+alert("total a pagar en compra..."+"\n"+netop);
+//validar cambio o vueltas a dar por pago efectivo
+if (fpago==1){
+    pago=parseInt(prompt("ingrese monto efectivo pagado x cliente en caja..."));
+    cambio=pago-netop
+}else{
+pago=parseInt(prompt("ingrese momnto efectivo pagado en caja"));
+netop=pago;
+}
+//SALIDA
+            document.write('**********'+'SUPERMERCADO SHOPPING :'+'***********'+'<br>'+'<br>');
+    document.write('**********'+'DATOS FACTURA POS:'+'*********'+'<br>'+'<br>');
+    document.write('PRODUCTOS COMPRADOS:  '+(num)+'<br>'+'<br>');
+    document.write('PRODUCTO:'+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+'PRECIO:'+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+'CANTIDAD:'+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+'VALOR:'+'<br>'+'<br>');
+    var i;
+    for (var i=0 ; i<num ; i++) {
+      document.write( nombrep[i] +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ SPeso.format(precio[i])+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ cant[i] +"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+SPeso.format(subt[i]) +'<br>');
+    }
+    document.write('******************************************************************'+'<br>');
+    document.write('<br>'+ 'SUBTOTAL:'+'<br>'+'<br>');
+    document.write('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+SPeso.format(suma) +'<br>'+'<br>');
+    document.write('Descuento:'+'<br>'+'<br>');
+    document.write('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+SPeso.format(desc) +'<br>'+'<br>');
+    document.write('Iva:'+'<br>'+'<br>');
+    document.write('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+SPeso.format(iva) +'<br>'+'<br>');
+    document.write('Neto a pagar:'+'<br>'+'<br>');
+    document.write('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+SPeso.format(netop)+'<br>'+'<br>');
+    document.write('Efectivo pagado:'+'<br>'+'<br>');
+    document.write('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+SPeso.format(pago)+'<br>'+'<br>');
+    document.write('Cambio:'+'<br>'+'<br>');
+    document.write('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+SPeso.format(cambio)+'<br>'+'<br>');
+    document.write("Registrado:.."+ f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()+'&nbsp;&nbsp;&nbsp;&nbsp;'+ f.getHours()+":"+f.getMinutes()+":"+f.getSeconds()+"<br>"+"<br>");
+    document.write('**************'+'ATENDIDO POR: '+nomstd+'***************'+'<br>'+'<br>');
+    document.write('*******************'+'GRACIAS POR SU COMPRA: UD.ES UN EXCELENTE CLIENTE'+'*********************'+'<br>');
+
+
+
+
+        </script>
+
+
+    </center>
+</body>
+</html>

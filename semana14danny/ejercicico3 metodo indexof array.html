@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>metodo indexof</title>
+</head>
+<body>
+    <center>
+        <img src="./img/Image20230506073211.png" alt="" width="150"  height="150">
+        <h1>metodo indexof en array</h1>
+        <h2>busqueda</h2>
+        <br><br>
+        <p>estudiante se encuentra en el indice No.</p>
+        <p id="std"></p>
+        <script>
+            //creacion
+            let num;
+            let std=new Array();
+            //captura
+            num=parseInt(prompt("Ingrese cantidad elementos a guardar..."));
+            for(i=0;i<num;i++){
+                std[i]=prompt("ingrese nombre std a guardar");
+            }
+            //busqueda
+            let datob=prompt("ingrese nombre std a buscar...");
+            let find=std.indexOf(datob.trim());
+            //validar si el dato STD se enconto 0= verdadero //-1=falso
+            if (find>-1){
+                document.getElementById("std").innerHTML=find+"&nbsp"+datob;
+
+            } else{
+                document.getElementById("std").innerHTML=find+"ERROR...No se encontro STD"+datob;
+            }
+
+
+        </script>
+    </center>
+</body>
+</html>
